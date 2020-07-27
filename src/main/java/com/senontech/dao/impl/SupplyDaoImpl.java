@@ -71,15 +71,14 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
             supply.setPhone(param.getPhone());
         if (param.getReleaseDate() != null)
             supply.setReleaseDate(param.getReleaseDate());
-        if (param.getBuyoutPrice() != null) {
-            supply.setBuyoutPrice(null);//先删后改
-            supply.setStartingPrice(null);
-            supply.setBuyoutPrice(param.getBuyoutPrice());
+        if (param.getPrice() != null) {
+            supply.setPrice(param.getPrice());
         }
-        if (param.getStartingPrice() != null) {
-            supply.setBuyoutPrice(null);//先删后改
-            supply.setStartingPrice(null);
-            supply.setStartingPrice(param.getStartingPrice());
+        if (param.getPriceType() != null) {
+            supply.setPriceType(param.getPriceType());
+        }
+        if (param.getUnitType()!=null){
+            supply.setUnitType(param.getUnitType());
         }
         if (param.getFarmName() != null)
             supply.setFarmName(param.getFarmName());
@@ -140,21 +139,13 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
                     condition.append(" and contacts =?");
                     list.add(supply.getContacts());
                 }
-                if (supply.getBuyoutPriceStart() != null) {
-                    condition.append(" and buyoutPrice >=?");
-                    list.add(supply.getBuyoutPriceStart());
+                if (supply.getPriceStart() != null) {
+                    condition.append(" and price >=?");
+                    list.add(supply.getPriceStart());
                 }
-                if (supply.getBuyoutPriceEnd() != null) {
-                    condition.append(" and buyoutPrice <=?");
-                    list.add(supply.getBuyoutPriceEnd());
-                }
-                if (supply.getStartingPriceStart() != null) {
-                    condition.append(" and startingPrice >=?");
-                    list.add(supply.getStartingPriceStart());
-                }
-                if (supply.getStartingPriceEnd() != null) {
-                    condition.append(" and startingPrice =?");
-                    list.add(supply.getStartingPriceEnd());
+                if (supply.getPriceEnd() != null) {
+                    condition.append(" and price <=?");
+                    list.add(supply.getPriceEnd());
                 }
                 if (supply.getStatus() != null) {
                     condition.append(" and status =?");
@@ -165,11 +156,12 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
                     list.add(supply.getFarmName());
                 }
                 if (supply.getPriceType() != null) {
-                    if (supply.getPriceType() == 0) {
-                        condition.append(" and buyoutPrice is not null");
-                    } else {
-                        condition.append(" and maxPrice is not null");
-                    }
+                    condition.append(" and priceType =?");
+                    list.add(supply.getPriceType());
+                }
+                if (supply.getUnitType() != null) {
+                    condition.append(" and unitType =?");
+                    list.add(supply.getUnitType());
                 }
             }
             condition.append(" and supplyId not in (:supplyIdList)");
@@ -234,21 +226,13 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
                     condition.append(" and contacts =?");
                     list.add(supply.getContacts());
                 }
-                if (supply.getBuyoutPriceStart() != null) {
-                    condition.append(" and buyoutPrice >=?");
-                    list.add(supply.getBuyoutPriceStart());
+                if (supply.getPriceStart() != null) {
+                    condition.append(" and price >=?");
+                    list.add(supply.getPriceStart());
                 }
-                if (supply.getBuyoutPriceEnd() != null) {
-                    condition.append(" and buyoutPrice <=?");
-                    list.add(supply.getBuyoutPriceEnd());
-                }
-                if (supply.getStartingPriceStart() != null) {
-                    condition.append(" and startingPrice >=?");
-                    list.add(supply.getStartingPriceStart());
-                }
-                if (supply.getStartingPriceEnd() != null) {
-                    condition.append(" and startingPrice =?");
-                    list.add(supply.getStartingPriceEnd());
+                if (supply.getPriceEnd() != null) {
+                    condition.append(" and price <=?");
+                    list.add(supply.getPriceEnd());
                 }
                 if (supply.getStatus() != null) {
                     condition.append(" and status =?");
@@ -259,11 +243,12 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
                     list.add(supply.getFarmName());
                 }
                 if (supply.getPriceType() != null) {
-                    if (supply.getPriceType() == 0) {
-                        condition.append(" and buyoutPrice is not null");
-                    } else {
-                        condition.append(" and maxPrice is not null");
-                    }
+                    condition.append(" and priceType =?");
+                    list.add(supply.getPriceType());
+                }
+                if (supply.getUnitType() != null) {
+                    condition.append(" and unitType =?");
+                    list.add(supply.getUnitType());
                 }
             }
             condition.append(" and supplyId not in (:supplyIdList)");

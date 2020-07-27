@@ -33,9 +33,7 @@ public class Transaction {
     @JSONField(serialize = false)
     private Integer deFlag;
     private List<Integer> transactionIdList;
-
     private String productName;//品名
-
     private String supplyContacts;//供方联系人
     private String demandContacts;//买方联系人
     private String supplyPhone;//供方联系电话
@@ -46,6 +44,18 @@ public class Transaction {
     private String area;//区
     private String township;//乡镇
     private String specificAddress;//具体地址
+    private String unitType;//单位类型（斤 公斤）
+
+    @Basic
+    @Column(name = "UNITTYPE", nullable = true)
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
 
     @Basic
     @Column(name = "TOWNSHIP", nullable = true)

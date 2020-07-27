@@ -22,8 +22,8 @@ public class Supply {
     private String contacts;//联系人
     private String phone;//联系电话
     private Date releaseDate;//发布日期
-    private Double buyoutPrice;//一口价
-    private Double startingPrice;//起价
+    private Double price;//价格
+    private String priceType;//价格类型
     private String farmName;//农场名
     private String status;//状态
     @JSONField(serialize = false)
@@ -31,10 +31,39 @@ public class Supply {
     @JSONField(serialize = false)
     private Integer deFlag;
     private List<Integer> supplyIdList;
-
-
     private Date endTime;//到期时间
     private Integer day;//时间天数
+    private String unitType;//单位类型（斤 公斤）
+
+
+    @Basic
+    @Column(name = "UNITTYPE", nullable = true)
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    @Basic
+    @Column(name = "PRICE", nullable = true)
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    @Basic
+    @Column(name = "PRICETYPE", nullable = true)
+    public String getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(String priceType) {
+        this.priceType = priceType;
+    }
 
 
     @Basic
@@ -57,28 +86,14 @@ public class Supply {
         this.day = day;
     }
 
-
-
-
-
     private Date releaseDateStart;//开始发布日期（用来查询）
     private Date releaseDateEnd;//结束发布日期（用来查询）
 
-    private Double buyoutPriceStart;//起始一口价（用来查询）
-    private Double buyoutPriceEnd;//结束一口价（用来查询）
+    private Double priceStart;//起始一口价（用来查询）
+    private Double priceEnd;//结束一口价（用来查询）
 
-    private Double startingPriceStart;//起始起价（用来查询）
-    private Double startingPriceEnd;//结束起价（用来查询）
 
-    private Integer priceType;
-    @Transient
-    public Integer getPriceType() {
-        return priceType;
-    }
 
-    public void setPriceType(Integer priceType) {
-        this.priceType = priceType;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name = "SUPPLYID", nullable = false)
@@ -147,24 +162,7 @@ public class Supply {
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
-    @Basic
-    @Column(name = "BUYOUTPRICE", nullable = true)
-    public Double getBuyoutPrice() {
-        return buyoutPrice;
-    }
 
-    public void setBuyoutPrice(Double buyoutPrice) {
-        this.buyoutPrice = buyoutPrice;
-    }
-    @Basic
-    @Column(name = "STARTINGPRICE", nullable = true)
-    public Double getStartingPrice() {
-        return startingPrice;
-    }
-
-    public void setStartingPrice(Double startingPrice) {
-        this.startingPrice = startingPrice;
-    }
     @Basic
     @Column(name = "FARMNAME", nullable = true)
     public String getFarmName() {
@@ -233,36 +231,22 @@ public class Supply {
     public void setReleaseDateEnd(Date releaseDateEnd) {
         this.releaseDateEnd = releaseDateEnd;
     }
+
     @Transient
-    public Double getBuyoutPriceStart() {
-        return buyoutPriceStart;
+    public Double getPriceStart() {
+        return priceStart;
     }
 
-    public void setBuyoutPriceStart(Double buyoutPriceStart) {
-        this.buyoutPriceStart = buyoutPriceStart;
+    public void setPriceStart(Double priceStart) {
+        this.priceStart = priceStart;
     }
     @Transient
-    public Double getBuyoutPriceEnd() {
-        return buyoutPriceEnd;
+    public Double getPriceEnd() {
+        return priceEnd;
     }
 
-    public void setBuyoutPriceEnd(Double buyoutPriceEnd) {
-        this.buyoutPriceEnd = buyoutPriceEnd;
-    }
-    @Transient
-    public Double getStartingPriceStart() {
-        return startingPriceStart;
+    public void setPriceEnd(Double priceEnd) {
+        this.priceEnd = priceEnd;
     }
 
-    public void setStartingPriceStart(Double startingPriceStart) {
-        this.startingPriceStart = startingPriceStart;
-    }
-    @Transient
-    public Double getStartingPriceEnd() {
-        return startingPriceEnd;
-    }
-
-    public void setStartingPriceEnd(Double startingPriceEnd) {
-        this.startingPriceEnd = startingPriceEnd;
-    }
 }

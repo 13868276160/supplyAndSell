@@ -61,15 +61,14 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
             demand.setPhone(param.getPhone());
         if (param.getReleaseDate() != null)
             demand.setReleaseDate(param.getReleaseDate());
-        if (param.getBuyoutPrice() != null) {//先删后改
-            demand.setMaxPrice(null);
-            demand.setBuyoutPrice(null);
-            demand.setBuyoutPrice(param.getBuyoutPrice());
+        if (param.getPrice() != null) {
+            demand.setPrice(param.getPrice());
         }
-        if (param.getMaxPrice() != null) {//先删后改
-            demand.setMaxPrice(null);
-            demand.setBuyoutPrice(null);
-            demand.setMaxPrice(param.getMaxPrice());
+        if (param.getPriceType() != null) {
+            demand.setPriceType(param.getPriceType());
+        }
+        if (param.getUnitType()!=null){
+            demand.setUnitType(param.getUnitType());
         }
         if (param.getStatus() != null)
             demand.setStatus(param.getStatus());
@@ -130,32 +129,25 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
                     condition.append(" and productName =?");
                     list.add(demand.getProductName());
                 }
-                if (demand.getBuyoutPriceStart() != null) {
-                    condition.append(" and buyoutPrice >=?");
-                    list.add(demand.getBuyoutPriceStart());
+                if (demand.getPriceStart() != null) {
+                    condition.append(" and price >=?");
+                    list.add(demand.getPriceStart());
                 }
-                if (demand.getBuyoutPriceEnd() != null) {
-                    condition.append(" and buyoutPrice <=?");
-                    list.add(demand.getBuyoutPriceEnd());
-                }
-                if (demand.getMaxPriceStart() != null) {
-                    condition.append(" and maxPrice >=?");
-                    list.add(demand.getMaxPriceStart());
-                }
-                if (demand.getMaxPriceStart() != null) {
-                    condition.append(" and maxPrice >=?");
-                    list.add(demand.getMaxPriceStart());
+                if (demand.getPriceEnd() != null) {
+                    condition.append(" and price <=?");
+                    list.add(demand.getPriceEnd());
                 }
                 if (demand.getStatus() != null) {
                     condition.append(" and status =?");
                     list.add(demand.getStatus());
                 }
-                if (demand.getPriceType() != null) {//查询价格类型
-                    if (demand.getPriceType() == 0) {
-                        condition.append(" and buyoutPrice is not null");
-                    } else {
-                        condition.append(" and maxPrice is not null");
-                    }
+                if (demand.getPriceType() != null) {
+                    condition.append(" and priceType =?");
+                    list.add(demand.getPriceType());
+                }
+                if (demand.getUnitType() != null) {
+                    condition.append(" and unitType =?");
+                    list.add(demand.getUnitType());
                 }
             }
             condition.append(" and demandId not in (:demandIdList)");
@@ -224,32 +216,25 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
                     condition.append(" and productName =?");
                     list.add(demand.getProductName());
                 }
-                if (demand.getBuyoutPriceStart() != null) {
-                    condition.append(" and buyoutPrice >=?");
-                    list.add(demand.getBuyoutPriceStart());
+                if (demand.getPriceStart() != null) {
+                    condition.append(" and price >=?");
+                    list.add(demand.getPriceStart());
                 }
-                if (demand.getBuyoutPriceEnd() != null) {
-                    condition.append(" and buyoutPrice <=?");
-                    list.add(demand.getBuyoutPriceEnd());
-                }
-                if (demand.getMaxPriceStart() != null) {
-                    condition.append(" and maxPrice >=?");
-                    list.add(demand.getMaxPriceStart());
-                }
-                if (demand.getMaxPriceEnd() != null) {
-                    condition.append(" and maxPrice >=?");
-                    list.add(demand.getMaxPriceEnd());
+                if (demand.getPriceEnd() != null) {
+                    condition.append(" and price <=?");
+                    list.add(demand.getPriceEnd());
                 }
                 if (demand.getStatus() != null) {
                     condition.append(" and status =?");
                     list.add(demand.getStatus());
                 }
                 if (demand.getPriceType() != null) {
-                    if (demand.getPriceType() == 0) {
-                        condition.append(" and buyoutPrice is not null");
-                    } else {
-                        condition.append(" and maxPrice is not null");
-                    }
+                    condition.append(" and priceType =?");
+                    list.add(demand.getPriceType());
+                }
+                if (demand.getUnitType() != null) {
+                    condition.append(" and unitType =?");
+                    list.add(demand.getUnitType());
                 }
             }
 

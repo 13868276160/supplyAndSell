@@ -243,6 +243,10 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
                 condition.append(" and productName =?");
                 list.add(transaction.getProductName());
             }
+            if (transaction.getUnitType()!=null){
+                condition.append(" and unitType =?");
+                list.add(transaction.getUnitType());
+            }
 
 
             StringBuilder counthql = new StringBuilder("select count(*) from Transaction where  " + condition +" order by timestamp desc");

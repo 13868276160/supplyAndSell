@@ -22,58 +22,27 @@ public class Demand {
     private String contacts;//联系人
     private String phone;//联系电话
     private Date releaseDate;//发布日期
-    private Double buyoutPrice;//一口价
-    private Double maxPrice;//最高价
+    private Double price;//价格
+    private String priceType;//价格类型
     private String status;//状态0未完成 1完成
-
     private Date endTime;//到期时间
     private Integer day;//时间天数
-
-
-    @Basic
-    @Column(name = "ENDTIME", nullable = true)
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    @Basic
-    @Column(name = "DAY", nullable = true)
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
-    }
-
+    private String unitType;//单位类型（斤 公斤）
     @JSONField(serialize = false)
     private Date timestamp;
     @JSONField(serialize = false)
     private Integer deFlag;
     private List<Integer> demandIdList;
 
-    private Integer priceType;
-    @Transient
-    public Integer getPriceType() {
-        return priceType;
-    }
 
-    public void setPriceType(Integer priceType) {
-        this.priceType = priceType;
-    }
 
     private Date releaseDateStart;//开始发布日期（用来查询）
     private Date releaseDateEnd;//结束发布日期（用来查询）
 
-    private Double buyoutPriceStart;//起始一口价（用来查询）
-    private Double buyoutPriceEnd;//结束一口价（用来查询）
+    private Double priceStart;//起始一口价（用来查询）
+    private Double priceEnd;//结束一口价（用来查询）
 
-    private Double maxPriceStart;//起始最高价（用来查询）
-    private Double maxPriceEnd;//结束最高价（用来查询）
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -141,24 +110,7 @@ public class Demand {
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
-    @Basic
-    @Column(name = "BUYOUTPRICE", nullable = true)
-    public Double getBuyoutPrice() {
-        return buyoutPrice;
-    }
 
-    public void setBuyoutPrice(Double buyoutPrice) {
-        this.buyoutPrice = buyoutPrice;
-    }
-    @Basic
-    @Column(name = "MAXPRICE", nullable = true)
-    public Double getMaxPrice() {
-        return maxPrice;
-    }
-
-    public void setMaxPrice(Double maxPrice) {
-        this.maxPrice = maxPrice;
-    }
     @Basic
     @Column(name = "TIMESTAMP", nullable = true)
     public Date getTimestamp() {
@@ -168,11 +120,7 @@ public class Demand {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
-    @Basic
-    @Column(name = "DEFLAG", nullable = true)
-    public Integer getDeFlag() {
-        return deFlag;
-    }
+
 
     @Basic
     @Column(name = "STATUS", nullable = true)
@@ -183,9 +131,62 @@ public class Demand {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    @Basic
+    @Column(name = "DEFLAG", nullable = true)
+    public Integer getDeFlag() {
+        return deFlag;
+    }
     public void setDeFlag(Integer deFlag) {
         this.deFlag = deFlag;
+    }
+
+    @Basic
+    @Column(name = "PRICE", nullable = true)
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    @Basic
+    @Column(name = "PRICETYPE", nullable = true)
+    public String getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(String priceType) {
+        this.priceType = priceType;
+    }
+
+    @Basic
+    @Column(name = "UNITTYPE", nullable = true)
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    @Basic
+    @Column(name = "ENDTIME", nullable = true)
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    @Basic
+    @Column(name = "DAY", nullable = true)
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
     }
 
     @Transient
@@ -218,35 +219,20 @@ public class Demand {
         this.releaseDateEnd = releaseDateEnd;
     }
     @Transient
-    public Double getBuyoutPriceStart() {
-        return buyoutPriceStart;
+    public Double getPriceStart() {
+        return priceStart;
     }
 
-    public void setBuyoutPriceStart(Double buyoutPriceStart) {
-        this.buyoutPriceStart = buyoutPriceStart;
+    public void setPriceStart(Double priceStart) {
+        this.priceStart = priceStart;
     }
     @Transient
-    public Double getBuyoutPriceEnd() {
-        return buyoutPriceEnd;
+    public Double getPriceEnd() {
+        return priceEnd;
     }
 
-    public void setBuyoutPriceEnd(Double buyoutPriceEnd) {
-        this.buyoutPriceEnd = buyoutPriceEnd;
-    }
-    @Transient
-    public Double getMaxPriceStart() {
-        return maxPriceStart;
+    public void setPriceEnd(Double priceEnd) {
+        this.priceEnd = priceEnd;
     }
 
-    public void setMaxPriceStart(Double maxPriceStart) {
-        this.maxPriceStart = maxPriceStart;
-    }
-    @Transient
-    public Double getMaxPriceEnd() {
-        return maxPriceEnd;
-    }
-
-    public void setMaxPriceEnd(Double maxPriceEnd) {
-        this.maxPriceEnd = maxPriceEnd;
-    }
 }
