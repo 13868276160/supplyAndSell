@@ -51,6 +51,8 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
     @Override
     public void edit(Demand param) {
         Demand demand = this.getByDeFlag(Demand.class, param.getDemandId());
+        if (param.getProductName() != null)
+            demand.setProductName(param.getProductName());
         if (param.getShopperId() != null)
             demand.setShopperId(param.getShopperId());
         if (param.getValue() != null)
@@ -61,6 +63,16 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
             demand.setPhone(param.getPhone());
         if (param.getReleaseDate() != null)
             demand.setReleaseDate(param.getReleaseDate());
+        if (param.getProvince() != null)
+            demand.setProvince(param.getProvince());
+        if (param.getCity()!=null)
+            demand.setCity(param.getCity());
+        if (param.getTownship() != null)
+            demand.setTownship(param.getTownship());
+        if (param.getSpecificAddress() != null)
+            demand.setSpecificAddress(param.getSpecificAddress());
+        if (param.getArea() != null)
+            demand.setArea(param.getArea());
         if (param.getPrice() != null) {
             demand.setPrice(param.getPrice());
         }
@@ -297,7 +309,6 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
 
     @Override
     public List<Demand> queryListToday() {
-
 
         Query query = this.getSession().createQuery("from Demand where deFlag = 0 and endTime >= :nowDate and status = 0");
         query.setParameter("nowDate", new Date());

@@ -71,6 +71,16 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
             supply.setPhone(param.getPhone());
         if (param.getReleaseDate() != null)
             supply.setReleaseDate(param.getReleaseDate());
+        if (param.getProvince() != null)
+            supply.setProvince(param.getProvince());
+        if (param.getCity()!=null)
+            supply.setCity(param.getCity());
+        if (param.getTownship() != null)
+            supply.setTownship(param.getTownship());
+        if (param.getSpecificAddress() != null)
+            supply.setSpecificAddress(param.getSpecificAddress());
+        if (param.getArea() != null)
+            supply.setArea(param.getArea());
         if (param.getPrice() != null) {
             supply.setPrice(param.getPrice());
         }

@@ -25,7 +25,9 @@ public class Transaction {
     private Double transactionAmount;//成交金额
     private Date transactionTime;//成交时间
     private Date launchTime;//发起时间
+    @JSONField(serialize = false)
     private Integer confirmId;//确认人Id
+    @JSONField(serialize = false)
     private String confirmType;//确认人类型
     private String status;//状态（0取消交易 1交易中 2拒绝 3交易完成 4已支付 5待确认收款）
     @JSONField(serialize = false)

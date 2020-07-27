@@ -169,17 +169,17 @@ public class TransactionController extends AbstractController{
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/queryListToday", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
         Map<String, Object> responseBody = new HashMap();
         responseBody.put(CODE, 1);
         try {
             responseBody.put(DATA, transactionService.queryListToday());
             responseBody.put(CODE, 0);
-            responseBody.put("msg", "交易信息分页查询成功。");
+            responseBody.put("msg", "交易信息查询成功。");
         } catch (Exception e) {
             e.printStackTrace();
-            responseBody.put("msg", "交易信息分页查询异常。");
+            responseBody.put("msg", "交易信息查询异常。");
         }
         return JSON.toJSONString(responseBody);
     }

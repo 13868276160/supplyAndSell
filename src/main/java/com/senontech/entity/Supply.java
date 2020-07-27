@@ -34,7 +34,11 @@ public class Supply {
     private Date endTime;//到期时间
     private Integer day;//时间天数
     private String unitType;//单位类型（斤 公斤）
-
+    private String province;//省
+    private String city;//市
+    private String area;//区
+    private String township;//乡镇
+    private String specificAddress;//具体地址
 
     @Basic
     @Column(name = "UNITTYPE", nullable = true)
@@ -231,6 +235,55 @@ public class Supply {
     public void setReleaseDateEnd(Date releaseDateEnd) {
         this.releaseDateEnd = releaseDateEnd;
     }
+
+    @Basic
+    @Column(name = "TOWNSHIP", nullable = true)
+    public String getTownship() {
+        return township;
+    }
+
+    public void setTownship(String township) {
+        this.township = township;
+    }
+
+    @Basic
+    @Column(name = "PROVINCE", nullable = true)
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+    @Basic
+    @Column(name = "CITY", nullable = true)
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    @Basic
+    @Column(name = "AREA", nullable = true)
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    @Basic
+    @Column(name = "SPECIFICADDRESS", nullable = true)
+    public String getSpecificAddress() {
+        return specificAddress;
+    }
+
+    public void setSpecificAddress(String specificAddress) {
+        this.specificAddress = specificAddress;
+    }
+
 
     @Transient
     public Double getPriceStart() {

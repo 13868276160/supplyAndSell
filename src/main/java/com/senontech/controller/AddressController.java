@@ -108,7 +108,7 @@ public class AddressController extends AbstractController{
      */
     @ResponseBody
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public String query(@RequestBody Address param) {
+    public String query( Address param) {
         Map<String, Object> responseBody = new WeakHashMap<String, Object>();
         responseBody.put(SUCCESSFUL, 0);
         try {
@@ -128,7 +128,7 @@ public class AddressController extends AbstractController{
      */
     @ResponseBody
     @RequestMapping(value = "/queryList", method = RequestMethod.GET)
-    public String queryList(@RequestBody Address param) {
+    public String queryList() {
         Map<String, Object> responseBody = new WeakHashMap<String, Object>();
         responseBody.put(SUCCESSFUL, 0);
         try {
@@ -151,7 +151,7 @@ public class AddressController extends AbstractController{
      */
     @ResponseBody
     @RequestMapping(value = "/queryListByCondition", method = RequestMethod.GET)
-    public String queryByLogParam(@RequestBody Address address) {
+    public String queryByLogParam( Address address) {
         Map<String, Object> responseBody = new HashMap();
         responseBody.put(CODE, 1);
         try {

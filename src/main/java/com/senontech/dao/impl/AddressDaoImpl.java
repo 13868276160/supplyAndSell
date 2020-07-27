@@ -71,7 +71,7 @@ public class AddressDaoImpl extends BaseDaoImpl implements IAddressDao {
         List<Object> list = new ArrayList<Object>();
 
         if (param.getId() != null) {
-            condition.append(" and Id =?");
+            condition.append(" and id =?");
             list.add(param.getId());
         }
         if (param.getRoleType() != null) {

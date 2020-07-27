@@ -24,7 +24,7 @@ public class ProductType {
     @JSONField(serialize = false)
     private Integer deFlag;
 
-    private Integer parentId;
+    private Integer parentId;//父Id
 
 
     private List<ProductType> productTypes;

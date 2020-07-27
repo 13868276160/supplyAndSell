@@ -69,6 +69,24 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
             transaction.setTransactionPrice(param.getTransactionPrice());
         if (param.getTransactionAmount() != null)
             transaction.setTransactionAmount(param.getTransactionAmount());
+        if (param.getTransactionTime() != null)
+            transaction.setTransactionTime(param.getTransactionTime());
+        if (param.getLaunchTime() != null)
+            transaction.setLaunchTime(param.getLaunchTime());
+        if (param.getUnitType() != null)
+            transaction.setUnitType(param.getUnitType());
+        if (param.getProvince() != null)
+            transaction.setProvince(param.getProvince());
+        if (param.getCity()!=null)
+            transaction.setCity(param.getCity());
+        if (param.getTownship() != null)
+            transaction.setTownship(param.getTownship());
+        if (param.getSpecificAddress() != null)
+            transaction.setSpecificAddress(param.getSpecificAddress());
+        if (param.getArea() != null)
+            transaction.setArea(param.getArea());
+        if (param.getProductName() != null)
+            transaction.setProductName(param.getProductName());
         if (param.getStatus() != null) {
             if (param.getStatus().equals("3")) {//交易完成改变信息状态
                 transaction.setStatus(param.getStatus());
@@ -300,18 +318,17 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
 
     @Override
     public List<Transaction> queryListToday() throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String startDate = simpleDateFormat.format(new Date());
-        Date startDate1 = simpleDateFormat.parse(startDate);
+
+        Date startDate1 = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(startDate1);
-        calendar.add(calendar.DATE, 1); //把日期往后增加一天,整数  往后推,负数往前移动
+        calendar.add(calendar.MONTH, -1); //把日期往前减一月,整数  往后推,负数往前移动
         Date endDate = calendar.getTime();
 
 
-        Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and transactionTime >= :startDate1 and transactionTime < :endDate and ststus = 3 and status = 4");
-        query.setParameter("startDate1", startDate1);
+        Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and transactionTime >= :endDate and transactionTime <= :nowDate and status in (3,4,5)");
         query.setParameter("endDate", endDate);
+        query.setParameter("nowDate", new Date());
         return query.list();
     }
 }

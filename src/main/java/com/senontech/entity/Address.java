@@ -15,7 +15,7 @@ import java.util.List;
 public class Address {
 
     private Integer addressId;
-    private Integer Id;//id
+    private Integer id;//id
     private String roleType;//角色类型（买方，买方）
     private String province;//省
     private String city;//市
@@ -40,15 +40,17 @@ public class Address {
     public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
+
     @Basic
     @Column(name = "ID", nullable = false)
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
+
     @Basic
     @Column(name = "ROLETYPE", nullable = false)
     public String getRoleType() {

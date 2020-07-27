@@ -171,17 +171,17 @@ public class SupperController extends AbstractController{
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/queryListToday", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
         Map<String, Object> responseBody = new HashMap();
         responseBody.put(CODE, 1);
         try {
             responseBody.put(DATA, supplyService.queryListToday());
             responseBody.put(CODE, 0);
-            responseBody.put("msg", "供应信息分页查询成功。");
+            responseBody.put("msg", "供应信息查询成功。");
         } catch (Exception e) {
             e.printStackTrace();
-            responseBody.put("msg", "供应信息分页查询异常。");
+            responseBody.put("msg", "供应信息查询异常。");
         }
         return JSON.toJSONString(responseBody);
     }
