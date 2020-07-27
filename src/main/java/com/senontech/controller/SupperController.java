@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/supply", produces = "application/json;charset=UTF-8")
@@ -174,16 +172,13 @@ public class SupperController extends AbstractController{
     @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
         Map<String, Object> responseBody = new HashMap();
-        responseBody.put(CODE, 1);
+        List<Supply> supplyList = new ArrayList<>();
         try {
-            responseBody.put(DATA, supplyService.queryListToday());
-            responseBody.put(CODE, 0);
-            responseBody.put("msg", "供应信息查询成功。");
+            supplyList= supplyService.queryListToday();
         } catch (Exception e) {
             e.printStackTrace();
-            responseBody.put("msg", "供应信息查询异常。");
         }
-        return JSON.toJSONString(responseBody);
+        return supplyList.toString();
     }
 
 }
