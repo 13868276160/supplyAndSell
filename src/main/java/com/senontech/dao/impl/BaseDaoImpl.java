@@ -25,7 +25,6 @@ public class BaseDaoImpl implements IBaseDao {
     }
 
 
-
     @Override
     public void save(Object object) {
         getSession().save(object);
