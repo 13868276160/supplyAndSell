@@ -18,12 +18,12 @@ public class DemandServiceImpl implements IDemandService {
     private IDemandDao demandDao;
 
     @Override
-    public void add(Demand param) throws Exception {
+    public void add(Demand param)  {
         this.demandDao.add(param);
     }
 
     @Override
-    public void del(Integer demandId) throws Exception {
+    public void del(Integer demandId)  {
         this.demandDao.del(demandId);
 
     }
@@ -35,7 +35,7 @@ public class DemandServiceImpl implements IDemandService {
     }
 
     @Override
-    public void edit(Demand param) throws ErrorCodeException {
+    public void edit(Demand param)  {
         this.demandDao.edit(param);
 
     }
@@ -51,12 +51,12 @@ public class DemandServiceImpl implements IDemandService {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException {
+    public PageSize queryPageList(PageSize pageSize)  {
         return this.demandDao.queryPageList(pageSize);
     }
 
     @Override
-    public List<Demand> queryListToday() throws ParseException {
+    public List<Demand> queryListToday()  {
         return this.demandDao.queryListToday();
     }
 }

@@ -62,5 +62,5 @@ public interface IShopperService {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException;
+    PageSize queryPageList(PageSize pageSize) ;
 }

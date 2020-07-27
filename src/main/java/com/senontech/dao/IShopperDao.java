@@ -14,7 +14,7 @@ public interface IShopperDao {
      * @param param
      * @return
      */
-    void add(Shopper param) throws ErrorCodeException;
+    void add(Shopper param) ;
 
     /**
      * 删除买家数据
@@ -61,5 +61,5 @@ public interface IShopperDao {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException;
+    PageSize queryPageList(PageSize pageSize) ;
 }

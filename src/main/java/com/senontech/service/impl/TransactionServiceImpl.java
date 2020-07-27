@@ -21,7 +21,7 @@ public class TransactionServiceImpl implements ITransactionService {
     private ITransactionDao transactionDao;
 
     @Override
-    public void add(Transaction param) throws Exception {
+    public void add(Transaction param)  {
         if(param.getTransactionPrice()!=null&&param.getValue()!=null){
             BigDecimal transactionPrice=new BigDecimal(param.getTransactionPrice());
             BigDecimal value=new BigDecimal(param.getValue());
@@ -32,7 +32,7 @@ public class TransactionServiceImpl implements ITransactionService {
     }
 
     @Override
-    public void del(Integer transactionId) throws Exception {
+    public void del(Integer transactionId)  {
         this.transactionDao.del(transactionId);
 
     }
@@ -44,7 +44,7 @@ public class TransactionServiceImpl implements ITransactionService {
     }
 
     @Override
-    public void edit(Transaction param) throws ErrorCodeException {
+    public void edit(Transaction param) {
         this.transactionDao.edit(param);
 
     }
@@ -60,7 +60,7 @@ public class TransactionServiceImpl implements ITransactionService {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException {
+    public PageSize queryPageList(PageSize pageSize)  {
         return this.transactionDao.queryPageList(pageSize);
     }
 

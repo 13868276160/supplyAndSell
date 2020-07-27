@@ -31,7 +31,7 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
 
 
     @Override
-    public void add(Transaction param) throws ErrorCodeException {
+    public void add(Transaction param)  {
         param.setStatus("1");
         param.setDeFlag(0);
         param.setLaunchTime(new Date());
@@ -111,7 +111,7 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException {
+    public PageSize queryPageList(PageSize pageSize)  {
 
         //如果起始页码或页面大小为空,或者属于异常值,返回所有符合条件数据
         if (pageSize.getPage() == null || pageSize.getPage() <= 0 || pageSize.getSize() == null || pageSize.getSize() <= 0) {

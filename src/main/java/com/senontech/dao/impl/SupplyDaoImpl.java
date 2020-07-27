@@ -24,7 +24,7 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
 
 
     @Override
-    public void add(Supply param) throws ErrorCodeException {
+    public void add(Supply param) {
         param.setStatus("0");
         Date date = new Date();
 
@@ -108,7 +108,7 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException {
+    public PageSize queryPageList(PageSize pageSize)  {
 
         //如果起始页码或页面大小为空,或者属于异常值,直接条件查询所有数据
         if (pageSize.getPage() == null || pageSize.getPage() <= 0 || pageSize.getSize() == null || pageSize.getSize() <= 0) {
@@ -116,20 +116,6 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
             List<Object> list = new ArrayList<Object>();
             List<Integer> supplyIdList = new ArrayList<>();
             supplyIdList.add(0);
-
-
-//            if (pageSize.getShopperId()!=null){
-//                Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and shopperId = :shopperId");
-//                query.setParameter("shopperId",pageSize.getShopperId());
-//                List<Transaction> transactionList=query.list();
-//
-//                if (transactionList!=null) {
-//                    for (Transaction transaction : transactionList) {
-//                        condition.append(" and supplyId <> ?");
-//                        list.add(transaction.getSupplyId());
-//                    }
-//                }
-//            }
 
 
             if (pageSize.getCondition() != null) {
@@ -295,18 +281,7 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
                     }
                 }
             }
-//            if (pageSize.getShopperId()!=null){
-//                Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and shopperId = :shopperId");
-//                query.setParameter("shopperId",pageSize.getShopperId());
-//                List<Transaction> transactionList=query.list();
-//
-//                if (transactionList!=null) {
-//                    for (Transaction transaction : transactionList) {
-//                        condition.append(" and supplyId <> ?");
-//                        list.add(transaction.getSupplyId());
-//                    }
-//                }
-//            }
+
             condition.append(" and endTime >= :nowDate");
             StringBuilder counthql = new StringBuilder("select count(*) from Supply where  " + condition +" order by timestamp desc");
             StringBuilder listhql = new StringBuilder("from Supply where  " + condition +" order by timestamp desc");
@@ -350,7 +325,7 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
     }
 
     @Override
-    public List<Supply> queryListToday() throws ParseException {
+    public List<Supply> queryListToday()  {
 
         Query query = this.getSession().createQuery("from Supply where deFlag = 0 and endTime >= :nowDate and status = 0");
         query.setParameter("nowDate", new Date());

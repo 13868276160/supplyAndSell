@@ -15,7 +15,7 @@ public interface ITransactionDao {
      * @param param
      * @return
      */
-    void add(Transaction param) throws ErrorCodeException;
+    void add(Transaction param) ;
 
     /**
      * 删除交易数据
@@ -56,7 +56,7 @@ public interface ITransactionDao {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询需求数据列表

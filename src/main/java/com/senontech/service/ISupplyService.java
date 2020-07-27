@@ -17,14 +17,14 @@ public interface ISupplyService {
      * @param param
      * @return
      */
-    void add(Supply param) throws Exception;
+    void add(Supply param) ;
 
     /**
      * 删除供应数据
      * @param demandId
      * @return
      */
-    void del(Integer demandId) throws Exception;
+    void del(Integer demandId) ;
     void delList(List<Integer> demandIdList);
 
     /**
@@ -32,7 +32,7 @@ public interface ISupplyService {
      * @param param
      * @return
      */
-    void edit(Supply param) throws ErrorCodeException;
+    void edit(Supply param) ;
 
     /**
      * 根据供应ID查询需求信息
@@ -52,12 +52,12 @@ public interface ISupplyService {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询供应数据列表
      * @return
      */
-    List<Supply> queryListToday() throws ParseException;
+    List<Supply> queryListToday() ;
 
 }

@@ -51,7 +51,7 @@ public interface ITransactionService {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询交易数据列表

@@ -1,22 +1,16 @@
-package com.senontech.dao;
-
-
-
+package com.senontech.service;
 
 import com.senontech.entity.Address;
-import com.senontech.exceptions.ErrorCodeException;
-import com.senontech.param.PageSize;
 
-import java.text.ParseException;
 import java.util.List;
 
-public interface IAddressDao {
+public interface IAddressService {
     /**
      * 添加地址数据
      * @param param
      * @return
      */
-    void add(Address param) ;
+    void add(Address param);
 
     /**
      * 删除地址数据
@@ -56,5 +50,4 @@ public interface IAddressDao {
      * @return
      */
     List<Address> queryListByCondition(Address param);
-
 }

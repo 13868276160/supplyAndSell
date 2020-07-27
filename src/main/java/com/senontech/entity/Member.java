@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "T_MEMBER", schema = "dbo", catalog = "db_member")
+@Table(name = "T_MEMBER")
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE T_MEMBER SET deFlag = 1 WHERE memberId = ? ")
 public class Member {

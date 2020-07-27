@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "T_ADDRESS", schema = "dbo", catalog = "db_member")
+@Table(name = "T_ADDRESS")
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE T_ADDRESS SET deFlag = 1 WHERE addressId = ? ")
 public class Address {

@@ -17,7 +17,7 @@ import java.util.*;
 @Repository
 public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
     @Override
-    public void add(Demand param) throws ErrorCodeException {
+    public void add(Demand param) {
         param.setStatus("0");
         param.setDeFlag(0);
         Date date = new Date();
@@ -97,7 +97,7 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException {
+    public PageSize queryPageList(PageSize pageSize)  {
 
 
 
@@ -311,7 +311,7 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
     }
 
     @Override
-    public List<Demand> queryListToday() throws ParseException {
+    public List<Demand> queryListToday() {
 
 
         Query query = this.getSession().createQuery("from Demand where deFlag = 0 and endTime >= :nowDate and status = 0");

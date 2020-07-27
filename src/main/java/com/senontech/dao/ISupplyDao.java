@@ -15,7 +15,7 @@ public interface ISupplyDao {
      * @param param
      * @return
      */
-    void add(Supply param) throws ErrorCodeException;
+    void add(Supply param) ;
 
     /**
      * 删除供应数据
@@ -56,11 +56,11 @@ public interface ISupplyDao {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询需求数据列表
      * @return
      */
-    List<Supply> queryListToday() throws ParseException;
+    List<Supply> queryListToday() ;
 }

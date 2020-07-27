@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "T_SUPPLY", schema = "dbo", catalog = "db_member")
+@Table(name = "T_SUPPLY")
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE T_SUPPLY SET deFlag = 1 WHERE supplyId = ? ")
 public class Supply {

@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class ShopperDaoImpl extends BaseDaoImpl implements IShopperDao {
     @Override
-    public void add(Shopper param) throws ErrorCodeException {
+    public void add(Shopper param) {
         param.setDeFlag(0);
         param.setTimestamp(new Date());
         this.save(param);
@@ -88,7 +88,7 @@ public class ShopperDaoImpl extends BaseDaoImpl implements IShopperDao {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException {
+    public PageSize queryPageList(PageSize pageSize)  {
         List<Object> list = new ArrayList<Object>();
         PageSize ps = new PageSize();
         ps.setPage(pageSize.getPage());

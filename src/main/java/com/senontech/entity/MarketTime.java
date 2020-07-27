@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "T_MARKETTIME", schema = "dbo", catalog = "db_member")
+@Table(name = "T_MARKETTIME")
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE T_MARKETTIME SET deFlag = 1 WHERE marketTimeId = ? ")
 public class MarketTime {

@@ -16,14 +16,14 @@ public interface IDemandService {
      * @param param
      * @return
      */
-    void add(Demand param) throws Exception;
+    void add(Demand param) ;
 
     /**
      * 删除需求数据
      * @param demandId
      * @return
      */
-    void del(Integer demandId) throws Exception;
+    void del(Integer demandId) ;
     void delList(List<Integer> demandIdList);
 
     /**
@@ -31,7 +31,7 @@ public interface IDemandService {
      * @param param
      * @return
      */
-    void edit(Demand param) throws ErrorCodeException;
+    void edit(Demand param);
 
     /**
      * 根据需求ID查询需求信息
@@ -52,11 +52,11 @@ public interface IDemandService {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询需求数据列表
      * @return
      */
-    List<Demand> queryListToday() throws ParseException;
+    List<Demand> queryListToday() ;
 }

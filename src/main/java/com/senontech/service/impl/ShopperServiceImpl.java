@@ -65,7 +65,7 @@ public class ShopperServiceImpl implements IShopperService {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException {
+    public PageSize queryPageList(PageSize pageSize)  {
         return this.shopperDao.queryPageList(pageSize);
     }
 }

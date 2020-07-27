@@ -15,7 +15,7 @@ public interface IDemandDao {
      * @param param
      * @return
      */
-    void add(Demand param) throws ErrorCodeException;
+    void add(Demand param) ;
 
     /**
      * 删除需求数据
@@ -57,11 +57,11 @@ public interface IDemandDao {
      * @return
      */
 
-    PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException;
+    PageSize queryPageList(PageSize pageSize) ;
 
     /**
      * 大屏查询需求数据列表
      * @return
      */
-    List<Demand> queryListToday() throws ParseException;
+    List<Demand> queryListToday() ;
 }

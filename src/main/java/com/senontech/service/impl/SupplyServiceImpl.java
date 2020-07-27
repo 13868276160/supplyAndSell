@@ -19,12 +19,12 @@ public class SupplyServiceImpl implements ISupplyService {
 
 
     @Override
-    public void add(Supply param) throws Exception {
+    public void add(Supply param)  {
         this.supplyDao.add(param);
     }
 
     @Override
-    public void del(Integer demandId) throws Exception {
+    public void del(Integer demandId)  {
         this.supplyDao.del(demandId);
 
     }
@@ -36,7 +36,7 @@ public class SupplyServiceImpl implements ISupplyService {
     }
 
     @Override
-    public void edit(Supply param) throws ErrorCodeException {
+    public void edit(Supply param)  {
         this.supplyDao.edit(param);
 
     }
@@ -52,12 +52,12 @@ public class SupplyServiceImpl implements ISupplyService {
     }
 
     @Override
-    public PageSize queryPageList(PageSize pageSize) throws ErrorCodeException, ParseException {
+    public PageSize queryPageList(PageSize pageSize)  {
         return this.supplyDao.queryPageList(pageSize);
     }
 
     @Override
-    public List<Supply> queryListToday() throws ParseException {
+    public List<Supply> queryListToday()  {
         return this.supplyDao.queryListToday();
     }
 }

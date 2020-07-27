@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "T_TRANSACTION", schema = "dbo", catalog = "db_member")
+@Table(name = "T_TRANSACTION")
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE T_TRANSACTION SET deFlag = 1 WHERE supplyId = ? ")
 public class Transaction {
@@ -47,6 +47,15 @@ public class Transaction {
     private String township;//乡镇
     private String specificAddress;//具体地址
 
+    @Basic
+    @Column(name = "TOWNSHIP", nullable = true)
+    public String getTownship() {
+        return township;
+    }
+
+    public void setTownship(String township) {
+        this.township = township;
+    }
 
     @Basic
     @Column(name = "PROVINCE", nullable = true)
@@ -75,15 +84,7 @@ public class Transaction {
     public void setArea(String area) {
         this.area = area;
     }
-    @Basic
-    @Column(name = "TOWNSHIP", nullable = true)
-    public String getTownship() {
-        return township;
-    }
 
-    public void setTownship(String township) {
-        this.township = township;
-    }
     @Basic
     @Column(name = "SPECIFICADDRESS", nullable = true)
     public String getSpecificAddress() {
