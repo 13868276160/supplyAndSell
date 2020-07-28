@@ -2,6 +2,7 @@ package com.senontech.controller;
 
 import com.alibaba.fastjson.JSON;
 
+import com.alibaba.fastjson.JSONArray;
 import com.senontech.entity.Supply;
 import com.senontech.param.PageSize;
 import com.senontech.service.ISupplyService;
@@ -171,14 +172,13 @@ public class SupperController extends AbstractController{
     @ResponseBody
     @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
-        Map<String, Object> responseBody = new HashMap();
         List<Supply> supplyList = new ArrayList<>();
         try {
             supplyList= supplyService.queryListToday();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return supplyList.toString();
+        return JSONArray.toJSONString(supplyList);
     }
 
 }

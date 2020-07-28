@@ -322,9 +322,9 @@ public class SupplyDaoImpl extends BaseDaoImpl implements ISupplyDao {
     @Override
     public List<Supply> queryListToday()  {
 
-        Query query = this.getSession().createQuery("from Supply where deFlag = 0 and endTime >= :nowDate and status = 0");
+        Query query = this.getSession().createQuery("from Supply where deFlag = 0 and endTime >= :nowDate and status = 0 order by releaseDate desc");
         query.setParameter("nowDate", new Date());
-
+        query.setMaxResults(15);
         return query.list();
     }
 }

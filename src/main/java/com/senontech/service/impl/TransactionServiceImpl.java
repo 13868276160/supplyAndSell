@@ -66,6 +66,17 @@ public class TransactionServiceImpl implements ITransactionService {
 
     @Override
     public List<Transaction> queryListToday() throws ParseException {
-        return this.transactionDao.queryListToday();
+        List<Transaction> transactionList = this.transactionDao.queryListToday();
+        if(transactionList!=null&&transactionList.size()>0){
+            for (Transaction transaction : transactionList) {
+                if(transaction.getUnitType()!=null&&"公斤".equals(transaction.getUnitType())){
+                    BigDecimal value=new BigDecimal(transaction.getValue());
+                    BigDecimal price=new BigDecimal(transaction.getTransactionPrice());
+                    transaction.setValue(value.multiply(new BigDecimal(2.0)).doubleValue());
+                    transaction.setTransactionPrice(price.divide(new BigDecimal(2.0)).doubleValue());
+                }
+            }
+        }
+        return transactionList;
     }
 }

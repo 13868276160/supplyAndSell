@@ -1,6 +1,8 @@
 package com.senontech.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.senontech.entity.Supply;
 import com.senontech.entity.Transaction;
 import com.senontech.param.PageSize;
 import com.senontech.service.ITransactionService;
@@ -11,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/transaction", produces = "application/json;charset=UTF-8")
@@ -171,17 +171,13 @@ public class TransactionController extends AbstractController{
     @ResponseBody
     @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
-        Map<String, Object> responseBody = new HashMap();
-        responseBody.put(CODE, 1);
+        List<Transaction> transactionList = new ArrayList<>();
         try {
-            responseBody.put(DATA, transactionService.queryListToday());
-            responseBody.put(CODE, 0);
-            responseBody.put("msg", "交易信息查询成功。");
+            transactionList= transactionService.queryListToday();
         } catch (Exception e) {
             e.printStackTrace();
-            responseBody.put("msg", "交易信息查询异常。");
         }
-        return JSON.toJSONString(responseBody);
+        return JSONArray.toJSONString(transactionList);
     }
 
 }

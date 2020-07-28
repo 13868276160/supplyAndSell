@@ -310,9 +310,9 @@ public class DemandDaoImpl extends BaseDaoImpl implements IDemandDao {
     @Override
     public List<Demand> queryListToday() {
 
-        Query query = this.getSession().createQuery("from Demand where deFlag = 0 and endTime >= :nowDate and status = 0");
+        Query query = this.getSession().createQuery("from Demand where deFlag = 0 and endTime >= :nowDate and status = 0  order by releaseDate desc");
         query.setParameter("nowDate", new Date());
-
+        query.setMaxResults(15);
         return query.list();
     }
 }

@@ -1,7 +1,9 @@
 package com.senontech.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.senontech.entity.Demand;
+import com.senontech.entity.Supply;
 import com.senontech.param.PageSize;
 import com.senontech.service.IDemandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/demand", produces = "application/json;charset=UTF-8")
@@ -173,17 +173,12 @@ public class DemandController extends AbstractController{
     @ResponseBody
     @RequestMapping(value = "/queryScreen", method = RequestMethod.GET)
     public String queryListToday() {
-        Map<String, Object> responseBody = new HashMap();
-        responseBody.put(CODE, 1);
+        List<Demand> demandList = new ArrayList<>();
         try {
-            responseBody.put(DATA, demandService.queryListToday());
-            responseBody.put(CODE, 0);
-            responseBody.put("msg", "需求信息查询成功。");
+            demandList= demandService.queryListToday();
         } catch (Exception e) {
             e.printStackTrace();
-            responseBody.put("msg", "需求信息查询异常。");
         }
-        return JSON.toJSONString(responseBody);
+        return JSONArray.toJSONString(demandList);
     }
-
 }

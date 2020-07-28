@@ -57,6 +57,8 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
         Transaction transaction = this.getByDeFlag(Transaction.class, param.getTransactionId());
         if (param.getMemberId() != null)
             transaction.setMemberId(param.getMemberId());
+        if (param.getRefusalReason() != null)
+            transaction.setRefusalReason(param.getRefusalReason());
         if (param.getValue() != null)
             transaction.setValue(param.getValue());
         if (param.getShopperId() != null)
@@ -326,9 +328,10 @@ public class TransactionDaoImpl extends BaseDaoImpl implements ITransactionDao {
         Date endDate = calendar.getTime();
 
 
-        Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and transactionTime >= :endDate and transactionTime <= :nowDate and status in (3,4,5)");
+        Query query = this.getSession().createQuery("from Transaction where deFlag = 0 and transactionTime >= :endDate and transactionTime <= :nowDate and status in (3,4,5) order by transactionTime desc");
         query.setParameter("endDate", endDate);
         query.setParameter("nowDate", new Date());
+        query.setMaxResults(15);
         return query.list();
     }
 }

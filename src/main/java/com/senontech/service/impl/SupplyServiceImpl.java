@@ -9,6 +9,7 @@ import com.senontech.service.ISupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.List;
 
@@ -58,6 +59,17 @@ public class SupplyServiceImpl implements ISupplyService {
 
     @Override
     public List<Supply> queryListToday()  {
-        return this.supplyDao.queryListToday();
+        List<Supply> supplyList = this.supplyDao.queryListToday();
+        if(supplyList!=null&&supplyList.size()>0){
+            for (Supply supply : supplyList) {
+                if(supply.getUnitType()!=null&&"公斤".equals(supply.getUnitType())){
+                    BigDecimal price=new BigDecimal(supply.getPrice());
+                    BigDecimal value=new BigDecimal(supply.getValue());
+                    supply.setPrice(price.divide(new BigDecimal(2.0)).doubleValue());
+                    supply.setValue(value.multiply(new BigDecimal(2.0)).doubleValue());
+                }
+            }
+        }
+        return supplyList;
     }
 }
