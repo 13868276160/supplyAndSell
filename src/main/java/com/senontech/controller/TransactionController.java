@@ -17,7 +17,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping(value = "/transaction", produces = "application/json;charset=UTF-8")
-public class TransactionController extends AbstractController{
+public class TransactionController extends AbstractController {
     @Autowired
     private ITransactionService transactionService;
 
@@ -41,6 +41,7 @@ public class TransactionController extends AbstractController{
         }
         return JSON.toJSONString(responseBody);
     }
+
     /**
      * 交易信息删除
      *
@@ -52,15 +53,16 @@ public class TransactionController extends AbstractController{
         Map<String, Object> responseBody = new WeakHashMap<String, Object>();
         responseBody.put(SUCCESSFUL, 0);
         try {
-            transactionService.del(param.getSupplyId());
+            transactionService.del(param.getTransactionId());
             responseBody.put(SUCCESSFUL, 1);
             responseBody.put("msg", "交易信息删除成功。");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseBody.put("msg", "交易信息删除异常。");
         }
         return JSON.toJSONString(responseBody);
     }
+
     @ResponseBody
     @RequestMapping(value = "/delList", method = RequestMethod.POST)
     public String delList(@RequestBody Transaction param) {
@@ -70,7 +72,7 @@ public class TransactionController extends AbstractController{
             transactionService.delList(param.getTransactionIdList());
             responseBody.put(SUCCESSFUL, 1);
             responseBody.put("msg", "交易信息删除成功。");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseBody.put("msg", "交易信息删除异常。");
         }
@@ -91,7 +93,7 @@ public class TransactionController extends AbstractController{
             transactionService.edit(param);
             responseBody.put(SUCCESSFUL, 1);
             responseBody.put("msg", "交易信息修改成功。");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseBody.put("msg", "交易信息修改异常。");
         }
@@ -109,10 +111,10 @@ public class TransactionController extends AbstractController{
         Map<String, Object> responseBody = new WeakHashMap<String, Object>();
         responseBody.put(SUCCESSFUL, 0);
         try {
-            responseBody.put("data",transactionService.query(param));
+            responseBody.put("data", transactionService.query(param));
             responseBody.put(SUCCESSFUL, 1);
             responseBody.put("msg", "交易信息查询成功。");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseBody.put("msg", "交易信息查询异常。");
         }
@@ -121,7 +123,6 @@ public class TransactionController extends AbstractController{
 
     /**
      * 查询交易信息数据列表
-     *
      */
     @ResponseBody
     @RequestMapping(value = "/queryList", method = RequestMethod.POST)
@@ -129,15 +130,16 @@ public class TransactionController extends AbstractController{
         Map<String, Object> responseBody = new WeakHashMap<String, Object>();
         responseBody.put(SUCCESSFUL, 0);
         try {
-            responseBody.put("data",transactionService.queryList());
+            responseBody.put("data", transactionService.queryList());
             responseBody.put(SUCCESSFUL, 1);
             responseBody.put("msg", "交易信息列表查询成功。");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseBody.put("msg", "交易信息列表查询异常。");
         }
         return JSON.toJSONString(responseBody);
     }
+
     /**
      * 分页查询列表
      *
@@ -173,7 +175,7 @@ public class TransactionController extends AbstractController{
     public String queryListToday() {
         List<Transaction> transactionList = new ArrayList<>();
         try {
-            transactionList= transactionService.queryListToday();
+            transactionList = transactionService.queryListToday();
         } catch (Exception e) {
             e.printStackTrace();
         }
